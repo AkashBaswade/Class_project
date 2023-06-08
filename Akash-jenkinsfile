@@ -1,1 +1,24 @@
+@Library('class_shared_lib') _
 
+pipeline{
+
+agent any
+
+parameters{
+
+        choice(name: 'action', choices: 'create\ndelete', description: 'Choose create/Destroy')
+        string(name: 'aws_account_id', description: " AWS Account ID", defaultValue: '121560131973')
+        }
+
+        stages{
+
+        stage("Git Checkout"){
+                   when { expression {  params.action == 'create' } }    
+                  steps{
+                        gitCheckout(
+                        branch: "main",
+                url: "https://github.com/AkashBaswade/Class_project.git"
+            )
+            }
+        }
+ }
