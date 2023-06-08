@@ -10,7 +10,7 @@ parameters{
         string(name: 'aws_account_id', description: " AWS Account ID", defaultValue: '121560131973')
         }
 
-        stages{
+   stages{
 
         stage("Git Checkout"){
                    when { expression {  params.action == 'create' } }    
@@ -20,5 +20,6 @@ parameters{
                 url: "https://github.com/AkashBaswade/Class_project.git"
             )
             }
-        }
+         }
+     }
  }
